@@ -20,7 +20,7 @@ def get_current_date():
 def get_api_response():
     url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin"
     date = get_current_date()
-    params = {"pincode":413132, "date": date}
+    params = {"pincode": pincode, "date": date}
     headers = {"accept": "application/json", "Accept-Language": "hi_IN"}
     response = requests.get(url=url, headers=headers, params=params)
     res = response.json()
@@ -50,7 +50,6 @@ def send_email(contents):
     message['To'] = receiver_address
     message['Subject'] = 'Vaccination alert: Slots are available for booking!'   #The subject line
     message.attach(MIMEText(mail_content, 'plain'))
-    #Create SMTP session for sending the mail
     session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
     session.starttls() #enable security
     session.login(sender_address, sender_pass) #login with mail_id and password
