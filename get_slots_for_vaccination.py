@@ -50,9 +50,9 @@ def send_email(contents):
     message['To'] = receiver_address
     message['Subject'] = 'Vaccination alert: Slots are available for booking!'   #The subject line
     message.attach(MIMEText(mail_content, 'plain'))
-    session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
-    session.starttls() #enable security
-    session.login(sender_address, sender_pass) #login with mail_id and password
+    session = smtplib.SMTP('smtp.gmail.com', 587)
+    session.starttls()
+    session.login(sender_address, sender_pass)
     text = message.as_string()
     session.sendmail(sender_address, receiver_address, text)
     session.quit()
