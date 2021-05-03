@@ -61,6 +61,7 @@ def send_email(contents):
 def run_core_functionality(time):
     print("Running the job at: "+(time))
     contents = get_api_response()
-    send_email(contents)
+    if "Center_id" in contents:
+        send_email(contents)
 
-schedule.every().day.at("12:00").do(run_core_functionality,'It is 12:00')
+schedule.every().day.at("12:00").do(run_core_functionality,'12:00')
